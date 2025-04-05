@@ -31,4 +31,16 @@ public static int[] firstNumSelfDivisors (int start, int num){
     }
     return selfDivisors;
 }
+
+public static void main (String[] args)
+  {
+    System.out.println("128: " + isSelfDivisor(128));
+    System.out.println("26: " + isSelfDivisor(26));
+    System.out.println("120: " + isSelfDivisor(120));
+    System.out.println("102: " + isSelfDivisor(102));
+    for (int n : firstNumSelfDivisors(10, 3))
+      System.out.print(n + " ");
+    System.out.println();
+  }
 }
+
