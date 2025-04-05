@@ -1,40 +1,34 @@
 public class SelfDivisor {
+    public static boolean isSelfDivisor(int number){
+        if (number == 0)
+        return false;
+    int numRemain = number;
 
-    public static boolean isSelfDivisor(int number) {
-        int temp = number;
+    while (numRemain > 0){
+        int digit = numRemain % 10;
 
-        while (temp > 0) {
-            int digit = temp % 10;
-            if (digit == 0 || number % digit != 0) {
-                return false;
-            }
-            temp /= 10;
-        }
-
-        return true;
+        if (digit == 0 || number % digit != 0)
+            return false;
+        
+            numRemain /= 10;
     }
 
-    public static int[] firstNumSelfDivisors(int start, int num) {
-        int[] result = new int[num];
-        int count = 0;
-        int current = start;
-
-        while (count < num) {
-            if (isSelfDivisor(current)) {
-                result[count] = current;
-                count++;
-            }
-            current++;
-        }
-
-        return result;
+    return true;
     }
 
-    public static void main(String[] args) {
-        int[] arr = firstNumSelfDivisors(10, 3);
-        for (int n : arr) {
-            System.out.print(n + " ");
+public static int[] firstNumSelfDivisors (int start, int num){
+    int[] selfDivisors = new int[num];
+
+    int possible = start;
+    int i = 0;
+
+    while (i<selfDivisors.length){
+        if(isSelfDivisor(possible)){
+            selfDivisors[i] = possible;
+            i++;
         }
-        // Output should be: 11 12 15
+        possible++;
     }
+    return selfDivisors;
+}
 }
